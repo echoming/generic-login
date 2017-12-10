@@ -19,6 +19,7 @@ package com.example.android.genericlogin;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -40,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
     /* Login button */
     private Button mLoginButton;
 
+    /* Coordinator layout to display snack bar */
+    private CoordinatorLayout mCoordinatorLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         mUserPasswordWrapper = findViewById(R.id.login_password_edit_text_wrapper);
         mUserEmail = findViewById(R.id.login_email_edit_text);
         mUserPassword = findViewById(R.id.login_password_edit_text);
+        mCoordinatorLayout = findViewById(R.id.login_coordinator_layout);
 
         mLoginButton = findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
