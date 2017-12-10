@@ -5,4 +5,9 @@
     <color name="colorAccent">#ffffff</color>
     <color name="colorWhite">#ffffff</color>
     <color name="iron">#fefefe</color>
+
+    <!-- app background color gradient -->
+    <color name="gradientStartColor">#ff1744</color>
+    <color name="gradientCenterColor">#ff3744</color>
+    <color name="gradientEndColor">#ff5744</color>
 </resources>
