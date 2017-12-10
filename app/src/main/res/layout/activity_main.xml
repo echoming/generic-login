@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        app:errorTextAppearance="@color/colorWhite">
 
         <EditText
             android:id="@+id/login_email_edit_text"
@@ -30,7 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        app:errorTextAppearance="@color/colorWhite">
 
         <EditText
             android:id="@+id/login_password_edit_text"
