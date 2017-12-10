@@ -4,7 +4,7 @@ Login-screen as per material-design guide lines.
 
 ### UX design
 
-<img src="https://user-images.githubusercontent.com/32653955/33802022-74e070b0-dd3b-11e7-84da-f458b9d919ac.png" width="275" height="475"> <img src="https://user-images.githubusercontent.com/32653955/33802022-74e070b0-dd3b-11e7-84da-f458b9d919ac.png" width="275" height="475">
+<img src="https://user-images.githubusercontent.com/32653955/33802022-74e070b0-dd3b-11e7-84da-f458b9d919ac.png" width="275" height="475"> <img src="https://user-images.githubusercontent.com/32653955/33802021-74d26894-dd3b-11e7-93ef-1e23227e08af.png" width="275" height="475">
 
 ### License Info
 
