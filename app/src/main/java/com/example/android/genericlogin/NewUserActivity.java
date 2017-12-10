@@ -52,7 +52,7 @@ public class NewUserActivity extends AppCompatActivity {
         loginExistingAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent loginExistingAccountIntent = new Intent(NewUserActivity.this, MainActivity.class);
+                Intent loginExistingAccountIntent = new Intent(NewUserActivity.this, LoginActivity.class);
                 startActivity(loginExistingAccountIntent);
             }
         });
