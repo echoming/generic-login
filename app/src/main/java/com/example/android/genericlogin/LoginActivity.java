@@ -19,6 +19,7 @@ package com.example.android.genericlogin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TextInputLayout;
@@ -28,6 +29,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.android.genericlogin.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -44,11 +47,12 @@ public class LoginActivity extends AppCompatActivity {
 
     /* Coordinator layout to display snack bar */
     private CoordinatorLayout mCoordinatorLayout;
+    ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
         // Find all views with respective IDs
         mUserEmailWrapper = findViewById(R.id.login_email_edit_text_wrapper);

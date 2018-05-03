@@ -19,6 +19,7 @@ package com.example.android.genericlogin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.android.genericlogin.databinding.ActivityNewUserBinding;
 
 public class NewUserActivity extends AppCompatActivity {
 
@@ -41,11 +44,12 @@ public class NewUserActivity extends AppCompatActivity {
     private EditText mUserPassword;
 
     private Button mCreateAccountButton;
+    ActivityNewUserBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_user);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_new_user);
 
         /* Find all the views with respective Ids */
         mUserEmailWrapper = findViewById(R.id.new_user_email_edit_text_wrapper);
