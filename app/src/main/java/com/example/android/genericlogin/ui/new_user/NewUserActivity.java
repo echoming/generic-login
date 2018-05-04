@@ -9,19 +9,18 @@
  * KIND, either express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  *
- * Created by Nishant Patel in 02/05/18 9:25 PM
+ * Created by Nishant Patel in 02/05/18 10:11 PM
  *
  * Copyright (c) 2018.
- * Last modified  10/12/17 5:03 PM
+ * Last modified  02/05/18 10:07 PM
  */
 
-package com.example.android.genericlogin;
+package com.example.android.genericlogin.ui.new_user;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -30,57 +29,61 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.android.genericlogin.databinding.ActivityLoginBinding;
+import com.example.android.genericlogin.MainActivity;
+import com.example.android.genericlogin.R;
+import com.example.android.genericlogin.databinding.ActivityNewUserBinding;
+import com.example.android.genericlogin.ui.login.LoginActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class NewUserActivity extends AppCompatActivity {
 
-    /* TextInput Wrappers */
+    /* TextInput wrappers */
     private TextInputLayout mUserEmailWrapper;
+    private TextInputLayout mUserNameWrapper;
     private TextInputLayout mUserPasswordWrapper;
 
-    /* EditText fields */
+    /* EditText fields for user information */
     private EditText mUserEmail;
+    private EditText mUserName;
     private EditText mUserPassword;
 
-    /* Login button */
-    private Button mLoginButton;
-
-    /* Coordinator layout to display snack bar */
-    private CoordinatorLayout mCoordinatorLayout;
-    ActivityLoginBinding binding;
+    private Button mCreateAccountButton;
+    ActivityNewUserBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_new_user);
 
-        // Find all views with respective IDs
-        mUserEmailWrapper = findViewById(R.id.login_email_edit_text_wrapper);
-        mUserPasswordWrapper = findViewById(R.id.login_password_edit_text_wrapper);
-        mUserEmail = findViewById(R.id.login_email_edit_text);
-        mUserPassword = findViewById(R.id.login_password_edit_text);
-        mCoordinatorLayout = findViewById(R.id.login_coordinator_layout);
+        /* Find all the views with respective Ids */
+        mUserEmailWrapper = findViewById(R.id.new_user_email_edit_text_wrapper);
+        mUserNameWrapper = findViewById(R.id.new_user_name_edit_text_wrapper);
+        mUserPasswordWrapper = findViewById(R.id.new_user_password_edit_text_wrapper);
+        mUserEmail = findViewById(R.id.new_user_email_edit_text);
+        mUserName = findViewById(R.id.new_user_name_edit_text);
+        mUserPassword = findViewById(R.id.new_user_password_edit_text);
 
-        mLoginButton = findViewById(R.id.login_button);
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        mCreateAccountButton = findViewById(R.id.new_user_create_account_button);
+        mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                // When user clicks on 'CREATE ACCOUNT', take the input provided by user,
+                // validate it and create a new account
+                createNewAccount();
             }
         });
 
-        TextView createNewAccount = findViewById(R.id.login_link_create_new_account);
-        createNewAccount.setOnClickListener(new View.OnClickListener() {
+        TextView loginExistingAccount = findViewById(R.id.new_user_login_link_existing_user);
+        loginExistingAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent createNewAccountIntent = new Intent(LoginActivity.this, NewUserActivity.class);
-                startActivity(createNewAccountIntent);
+                Intent loginExistingAccountIntent = new Intent(NewUserActivity.this, LoginActivity.class);
+                startActivity(loginExistingAccountIntent);
             }
         });
     }
 
     /**
-     * Disable going back to {@link NewUserActivity}
+     * Disable going back to {@link MainActivity}
      */
     @Override
     public void onBackPressed() {
@@ -88,35 +91,40 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * When user clicks the login button, get the inputs provided by user and validate them,
-     * and login them
+     * Create new account when user clicks on `CREATE ACCOUNT` button
      */
-    private void login() {
-        // If data entered by user is not valid, exit the method
+    private void createNewAccount() {
+
+        // if user has not provided valid data, do not create an account and return from method
         if (!validateData()) {
             return;
         }
 
-        mLoginButton.setEnabled(false);
+        mCreateAccountButton.setEnabled(false);
 
-        // Show progress dialog for better user experience
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        final ProgressDialog progressDialog = new ProgressDialog(
+                NewUserActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
+        progressDialog.setMessage("Creating Account...");
         progressDialog.show();
     }
 
-    /**
-     * This method is used to validate data provided by user
-     *
-     * @return true and false depending upon valid data
-     */
     private boolean validateData() {
         boolean validData = true;
 
         String email = mUserEmail.getText().toString().trim();
+        String name = mUserName.getText().toString().trim();
         String password = mUserPassword.getText().toString();
+
+        // If the Name text field is empty or Name is less then 3 characters,
+        // give user a error message
+        if (TextUtils.isEmpty(name) || name.length() < 3) {
+            mUserNameWrapper.setError("at least 3 letters");
+            validData = false;
+        } else {
+            mUserNameWrapper.setErrorEnabled(false);
+        }
 
         // If the email text field is empty or email address is not per EMAIL_ADDRESS pattern,
         // give user a error message

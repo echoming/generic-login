@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
   ~ except in compliance with the License. You may obtain a copy of the License at
   ~
@@ -36,11 +35,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewUserActivity"
+            android:name=".ui.new_user.NewUserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>

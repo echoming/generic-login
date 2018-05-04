@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.android.genericlogin.databinding.ActivityMainBinding;
+import com.example.android.genericlogin.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 }
