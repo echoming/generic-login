@@ -52,6 +52,14 @@ public class NewUserActivity extends AppCompatActivity
         binding.setUser(new User());
     }
 
+    /**
+     * Disable going back to {@link LoginActivity}
+     */
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     @Override
     public void createAccountSuccess() {
         binding.newUserNameEditTextWrapper.setErrorEnabled(false);
