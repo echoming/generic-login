@@ -11,8 +11,7 @@ Login-screen as per material-design guide lines.
 MVP + DataBinding
 
 ### UX design
-
-<img src="https://user-images.githubusercontent.com/32653955/33802022-74e070b0-dd3b-11e7-84da-f458b9d919ac.png" width="275"> <img src="https://user-images.githubusercontent.com/32653955/33802021-74d26894-dd3b-11e7-93ef-1e23227e08af.png" width="275">
+<img src="https://raw.githubusercontent.com/nishantkp/generic-login/master/ux/login.png" width="250"/> <img src="https://raw.githubusercontent.com/nishantkp/generic-login/master/ux/new-account.png" width="250"/>
 
 ### License Info
 
