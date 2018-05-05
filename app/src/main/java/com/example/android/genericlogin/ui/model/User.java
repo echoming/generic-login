@@ -26,6 +26,7 @@ import com.android.databinding.library.baseAdapters.BR;
 public class User extends BaseObservable {
     private String pass;
     private String user;
+    private String name;
 
     @Bindable
     public String getPass() {
@@ -35,6 +36,11 @@ public class User extends BaseObservable {
     @Bindable
     public String getUser() {
         return user;
+    }
+
+    @Bindable
+    public String getName() {
+        return name;
     }
 
     public void setUser(String user) {
@@ -47,6 +53,11 @@ public class User extends BaseObservable {
         notifyPropertyChanged(BR.pass);
     }
 
+    public void setName(String name) {
+        this.name = name;
+        notifyPropertyChanged(BR.name);
+    }
+
     /**
      * User name validation check
      *
@@ -55,7 +66,7 @@ public class User extends BaseObservable {
      */
     public static boolean isUserNameValid(String user) {
         return !(TextUtils.isEmpty(user)
-                || android.util.Patterns.EMAIL_ADDRESS.matcher(user).matches());
+                || !android.util.Patterns.EMAIL_ADDRESS.matcher(user).matches());
     }
 
     /**
@@ -66,5 +77,15 @@ public class User extends BaseObservable {
      */
     public static boolean isPasswordValid(String pass) {
         return !(TextUtils.isEmpty(pass) || pass.length() < 5 || pass.length() > 8);
+    }
+
+    /**
+     * Name validation
+     *
+     * @param name name of user
+     * @return true or false is name is valid or not
+     */
+    public static boolean isNameValid(String name) {
+        return !(TextUtils.isEmpty(name) || name.length() < 3);
     }
 }

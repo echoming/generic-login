@@ -17,5 +17,39 @@
 
 package com.example.android.genericlogin.ui.new_user;
 
-public class NewUserPresenter {
+import com.example.android.genericlogin.base.BasePresenter;
+import com.example.android.genericlogin.ui.model.User;
+
+public class NewUserPresenter extends BasePresenter<NewUserContract.View>
+        implements NewUserContract.Presenter {
+
+    NewUserPresenter() {
+    }
+
+    @Override
+    public void attachView(NewUserContract.View view) {
+        super.attachView(view);
+    }
+
+    @Override
+    public void detachView() {
+        super.detachView();
+    }
+
+    @Override
+    public void onCreateNewAccountButtonClick(String name,
+                                              String userName,
+                                              String pass,
+                                              NewUserContract.View.LoginCallback callback) {
+        // User entered data validation check
+        if (!User.isNameValid(name)) {
+            callback.invalidUserName();
+        } else if (!User.isUserNameValid(userName)) {
+            callback.invalidUserEmail();
+        } else if (!User.isPasswordValid(pass)) {
+            callback.invalidPassword();
+        } else {
+            getView().createAccountSuccess();
+        }
+    }
 }

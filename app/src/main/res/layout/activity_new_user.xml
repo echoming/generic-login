@@ -19,6 +19,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.example.android.genericlogin.ui.new_user.NewUserContract.Presenter" />
+
+        <variable
+            name="callback"
+            type="com.example.android.genericlogin.ui.new_user.NewUserContract.View.LoginCallback" />
+
+        <variable
+            name="user"
+            type="com.example.android.genericlogin.ui.model.User" />
+
+        <variable
+            name="login"
+            type="com.example.android.genericlogin.ui.new_user.NewUserContract.View" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,7 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:inputType="textCapWords|textNoSuggestions" />
+                android:inputType="textCapWords|textNoSuggestions"
+                android:text="@={user.name}" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -58,7 +78,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:text="@={user.user}" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -74,7 +95,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:inputType="numberPassword" />
+                android:inputType="numberPassword"
+                android:text="@={user.pass}" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
@@ -83,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
+            android:onClick="@{()->presenter.onCreateNewAccountButtonClick(user.name, user.user, user.pass, callback)}"
             android:padding="12dp"
             android:text="Create Account" />
 
@@ -92,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:gravity="center"
+            android:onClick="@{()->login.loginToExistingAccount()}"
             android:padding="16dp"
             android:text="Already a member? Login"
             android:textSize="16sp" />

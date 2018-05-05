@@ -17,10 +17,6 @@
 
 package com.example.android.genericlogin.ui.login;
 
-import android.databinding.BindingAdapter;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.example.android.genericlogin.base.BasePresenter;
 import com.example.android.genericlogin.ui.model.User;
 

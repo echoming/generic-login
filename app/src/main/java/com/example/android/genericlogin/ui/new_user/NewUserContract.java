@@ -18,13 +18,28 @@
 package com.example.android.genericlogin.ui.new_user;
 
 import com.example.android.genericlogin.base.MvpView;
+import com.example.android.genericlogin.ui.login.LoginContract;
+import com.example.android.genericlogin.ui.model.User;
 
 public interface NewUserContract {
     interface View extends MvpView {
+        void createAccountSuccess();
 
+        void loginToExistingAccount();
+
+        interface LoginCallback {
+            void invalidUserEmail();
+
+            void invalidPassword();
+
+            void invalidUserName();
+        }
     }
 
     interface Presenter {
-
+        void onCreateNewAccountButtonClick(String name,
+                                           String userName,
+                                           String pass,
+                                           NewUserContract.View.LoginCallback callback);
     }
 }
